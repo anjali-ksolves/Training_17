@@ -6,13 +6,15 @@
             <field name="model">crm.lead</field>
             <field name="inherit_id" ref="crm.crm_lead_view_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//button[@name='385']" position="after">
-                    <button name="action_cancel_so" string="Cancelled Sale Orders" type="object"
-                            class="btn-primary"/>
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button type="object"
+                            name="action_cancel_so"
+                            class="oe_stat_button" string="Cancelled Sale Orders" icon="fa-times-circle">
+                    </button>
                 </xpath>
-<!--                <xpath expr="//field[@name='phone']" position="after">-->
-<!--                    <field name="so_tag_ids" widget="many2many_tags"/>-->
-<!--                </xpath>-->
+                <xpath expr="//field[@name='tag_ids']" position="replace">
+                    <field name="sale_order_tag_ids" string="Tags"/>
+                </xpath>
             </field>
         </record>
         <record id="ir_cron_sale_orders" model="ir.cron">

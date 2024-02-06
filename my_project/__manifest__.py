@@ -3,7 +3,7 @@
 {
     'name': 'My Project',
     'author': 'Anjali',
-    'depends': ['base', 'hr', 'web', 'project', 'sale'],
+    'depends': ['base', 'hr', 'web', 'project', 'sale', 'sale_management'],
     'data': [
         'security/ir.model.access.csv',
         'wizard/sale_order_wizard.xml',
