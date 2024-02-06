@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="view_crm_lead_form_inherit_cancel_button" model="ir.ui.view">
+            <field name="name">crm.lead.form.inherit.cancel.button</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='385']" position="after">
+                    <button name="action_cancel_so" string="Cancelled Sale Orders" type="object"
+                            class="btn-primary"/>
+                </xpath>
+<!--                <xpath expr="//field[@name='phone']" position="after">-->
+<!--                    <field name="so_tag_ids" widget="many2many_tags"/>-->
+<!--                </xpath>-->
+            </field>
+        </record>
+        <record id="ir_cron_sale_orders" model="ir.cron">
+            <field name="name">Sale Orders</field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="state">code</field>
+            <field name="code">model.new_so()</field>
+            <field name="interval_number">2</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="view_project_task_form_inherit_smart_button" model="ir.ui.view">
+            <field name="name">project.task.form.inherit.smart.button</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button type="action"
+                            name="%(action_sale_order_wizard)d"
+                            class="oe_stat_button" string="Sale Order" icon="fa-pencil-square-o">
+                        <field name="total" widget="statinfo" string="Sale Order"/>
+                    </button>
+                </xpath>
+                <xpath expr="//page[@name='extra_info']" position="after">
+                    <page string="Linked Sale Orders" name="linked_sale_orders">
+                        <field name="sale_order_ids">
+                            <tree editable="bottom" edit="false" delete="false" create="false">
+                                <field name="name"/>
+                                <field name="date_order"/>
+                                <field name="partner_id"/>
+                                <field name="user_id"/>
+                                <field name="activity_ids"/>
+                                <field name="company_id"/>
+                                <field name="amount_total"/>
+                                <field name="invoice_status"/>
+                                <button name="remove_task" type="object" title="Revoke" icon="fa-trash"/>
+                            </tree>
+                        </field>
+                        <group>
+                            <field name="total" string="Total"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
